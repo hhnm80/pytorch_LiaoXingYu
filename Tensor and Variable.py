@@ -9,6 +9,15 @@ numpy_tensor=np.random.randn(10,20)
 print(numpy_tensor)
 
 # 我们可以使用下面两种方式将numpy的ndarray转换到tensor上,下面用两种方法将多维数组转化为张量
-# Tensor函数就是根据
+# Tensor函数就是根据传入的数据创建张量,
 pytorch_tensor1 = torch.Tensor(numpy_tensor)
 pytorch_tensor2 = torch.from_numpy(numpy_tensor)
+
+
+# 当然,也可以把张量转换为numpy数组,相当于上面的逆运算
+# 如果 pytorch tensor 在 cpu 上
+numpy_array = pytorch_tensor1.numpy()
+
+# 如果 pytorch tensor 在 gpu 上
+numpy_array = pytorch_tensor1.cpu().numpy()
+
