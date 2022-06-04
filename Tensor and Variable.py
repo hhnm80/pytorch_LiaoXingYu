@@ -21,3 +21,24 @@ numpy_array = pytorch_tensor1.numpy()
 # 如果 pytorch tensor 在 gpu 上
 numpy_array = pytorch_tensor1.cpu().numpy()
 
+# 需要注意 GPU 上的 Tensor 不能直接转换为 NumPy ndarray，需要使用`.cpu()`先将 GPU 上的 Tensor 转到 CPU 上
+
+# PyTorch Tensor 使用 GPU 加速
+#
+# 我们可以使用以下两种方式将 Tensor 放到 GPU 上
+# 第一种方式是定义 cuda 数据类型
+dtype = torch.cuda.FloatTensor # 定义默认 GPU 的 数据类型
+gpu_tensor = torch.randn(10, 20).type(dtype)
+
+# 第二种方式更简单，推荐使用
+gpu_tensor = torch.randn(10, 20).cuda(0) # 将 tensor 放到第一个 GPU 上
+
+# 其实就是放到第二块显卡上面,但是在我电脑上只有一块显卡,所以,这一句不能使用
+# gpu_tensor = torch.randn(10, 20).cuda(1) # 将 tensor 放到第二个 GPU 上
+# 而将 tensor 放回 CPU 的操作非常简单
+cpu_tensor = gpu_tensor.cpu()
+
+# 我们也能够访问到 Tensor 的一些属性
+# 可以通过下面两种方式得到 tensor 的大小
+print(pytorch_tensor1.shape)
+print(pytorch_tensor1.size())
