@@ -22,7 +22,7 @@ print("第一个元素???",variable1)
 # 循环执行了10次????为什么循环执行了10次呢???因为每次循环,first_counter和second_counter的值都在更新,(first_counter < second_counter)获得的是一个张量,这个张量里面的元素全是bool型,元素的个数取决于参与比较的两个张量每个张量里面的元素个数,假设
 
 # 改成while (first_counter < second_counter)效果一样,因为这里(first_counter < second_counter)只有一个元素,所以可以这么改
-# 第一次循环的时候,first_counter值是[0],second_counter值是[10],显然第一次是true,循环中会改变first_counter和second_counter这两个张量的值,第一次循环结束后,first_counter值是[2],而second_counter值是[11],虽然最开始first_counter里面的值比second_counter小,但是架不住first_counter的增量大,这样,循环几次后
+# 第一次循环的时候,first_counter值是[0],second_counter值是[10],显然第一次是true,循环中会改变first_counter和second_counter这两个张量的值,第一次循环结束后,first_counter值是[2],而second_counter值是[11],虽然最开始first_counter里面的值比second_counter小,但是架不住first_counter的增量大,这样,循环几次后first_counter和second_counter值相等的时候,循环结束
 while (first_counter < second_counter)[0]:
     first_counter += 2
     second_counter += 1
