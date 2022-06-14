@@ -2,7 +2,7 @@
 import torch
 from torch.autograd import Variable
 
-# Variable函数的作用是将torch.FloatTensor([2, 3])变成Variable变量,Variable变量是神经网络里面特有的一种数据结构,Variable函数的作用就是将张量转换为Variable变量,,,,
+# Variable函数的作用是将torch.FloatTensor([2, 3])变成Variable变量,Variable变量是神经网络里面特有的一种数据结构,Variable函数的作用就是将张量转换为Variable变量,,,,requires_grad=True表明需要对x变量求导
 x = Variable(torch.FloatTensor([2, 3]), requires_grad=True)
 
 # 先是定义了,k的形状和值,k的形状,zeros这个函数在很多地方都有,numpy里面有,matlab里面有,在numpy里面,zeros函数就是创建一个数组,这个数组的"质"已经规定了,就是里面的元素全为0 ,但是还没有"形",因此我们传入参数,一个或者两个或者三个参数,几个参数就是几维,这里传入一个2,就是1个维度,而且这个维度的元素个数是2,注意这个2不是数值,因为数值已经给你规定了,有几个维度还不够,还要知道每个维度有多少个数值,在这里,一个参数就是说明只有一个维度,这个维度的元素个数是2,值全为0,简单表示就是[0,0],在pytorch里面,函数的调用返回值一般都是tensor张量,没有数组的概念,torch.zeros(2)不好理解???zeros(2)好理解吧,一个函数,参数为2....
@@ -16,7 +16,7 @@ print(k)
 # zeros()函数返回的是什么呢???它是pytorch的函数,返回的一般是张量,张量必然有其形和质,这里的形是2维,第一维是2个元素,第二维也是二个元素,2行2列,二维数组可以不定义行数,但是一定不能不定义列数,这就是说最后一个维度是必须定义的,既然这里定义了j.......返回值赋值,基本操作.....
 j = torch.zeros(2, 2)
 # k求导,k是x所构成的,k是x的函数
-k.backward(torch.FloatTensor([1, 0]), retain_graph=True)
+k.backward(torch.FloatTensor([1, 1]), retain_graph=True)
 
 # 报错
 # k.backward()
@@ -59,9 +59,15 @@ k.backward(torch.FloatTensor([0, 1]))
 
 # 注意求导的是
 
-# x的梯度 tensor([2., 6.])，为什么是这个值呢？？？？假设不对梯度归零,值为多少呢?????
+# x的梯度 tensor([2., 6.])，为什么是这个值呢？？？？假设不对梯度归零,值为多少呢?????要输出x的梯度,关键是看k对x的求导结果,为什么会是[2,6]呢,有点困惑,太困惑了?????在上面k.backward(torch.FloatTensor([0, 1]))这个语句中,貌似我们提供了一个向量倍数,就是[0,1],分别是向量值的倍数,,,,,注意在这里,k不是一个数值变量,货这k不是一个单数值的向量,这种就不是简单的倍数相乘了,按照上面的表达式(2x[0]+2,3+2x[1]),如果直接按照倍数相乘,得到的结果是[0,9],但是实际上不是这样的,这时候怎么办呢???,我们需要百度backward参数,
 print("x的梯度",x.grad)
 
 
-
+#
 j[1] = x.grad.data
+
+#j的值是: tensor([[4., 3.],
+        # [2., 6.]])
+
+#         k与j有关系么????没有关系,k是x的函数,
+print("j的值是:",j)
