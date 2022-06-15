@@ -20,8 +20,14 @@ print(c)
 #tensor(16.5000, grad_fn=<MeanBackward0>)
 # mean函数是用来求数组(矩阵)里面元素的平均的,在这里就是(15+18)/2=16.5,但是输出是
 out = c.mean()
+# tensor(16.5000, grad_fn=<MeanBackward0>)
 print(out)
+# torch.Size([])
 print(out.shape)
+
+# 通过输出发现,out是没有形状的,这说明out的确是一个值,
+
+
 
 
 # 这里为什么没有参数呢?????out求导,,out是对什么求导呢?????out是c里面的元素求平均值所得,如果用数学表达式表示,就是(a+b+c)/n这种,如果元素个数为3,这里n=3,所以out最终是由c[0],c[1]....就是c里面所有的值共同决定的,,,,
