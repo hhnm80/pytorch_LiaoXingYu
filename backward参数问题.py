@@ -20,6 +20,8 @@ print(c)
 #tensor(16.5000, grad_fn=<MeanBackward0>)
 # mean函数是用来求数组(矩阵)里面元素的平均的,在这里就是(15+18)/2=16.5,但是输出是
 out = c.mean()
+
+# 虽然out的确是一个数值,但是在potorch里面,,,,,
 # tensor(16.5000, grad_fn=<MeanBackward0>)
 print(out)
 # torch.Size([])
