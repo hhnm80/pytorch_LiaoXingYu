@@ -25,7 +25,7 @@ print(out)
 # torch.Size([])
 print(out.shape)
 
-# 通过输出发现,out是没有形状的,这说明out的确是一个值,
+# 通过输出发现,out是没有形状的,这说明out的确是一个值,,,,,
 
 
 
